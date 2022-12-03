@@ -9,15 +9,12 @@ export const Home = () => {
   const updateUserHeartbeat = () => {
     if (localUserExists()) {
       const user = getLocalUser()
-      
-      console.log(user)
-
       sendHeartbeat(user).catch((e) => console.error(e))
     }
   }
-  
+
   useEffect(() => {
-    updateUserHeartbeat();
+    updateUserHeartbeat()
   }, [])
 
   return (
@@ -30,8 +27,6 @@ export const Home = () => {
           <ChangeUsernameButton
             onNameChange={(newUsername) => {
               setUsername(newUsername)
-
-              console.log(username)
             }}
           />
         </div>
