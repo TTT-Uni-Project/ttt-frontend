@@ -10,3 +10,13 @@ export const sendHeartbeat = async (user) => {
   }
   return await fetch('/heartbeat', requestOptions)
 }
+
+export const createGame = async (players) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ players: players }),
+  }
+  console.log('players = ', players)
+  return await fetch('/game', requestOptions)
+}
