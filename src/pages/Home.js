@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { localUserExists, getLocalUser } from '../localStore'
 import { sendHeartbeat } from '../api'
 import { ChangeUsernameButton } from '../components/ChangeUsernameButton'
+import Players from '../components/Players'
 
 export const Home = () => {
   const [username, setUsername] = useState('')
@@ -31,6 +32,9 @@ export const Home = () => {
           />
         </div>
       </header>
+      <div className='content'>
+        <Players />
+      </div>
     </div>
   )
 }
