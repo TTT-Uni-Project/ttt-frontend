@@ -20,3 +20,15 @@ export const createGame = async (players) => {
   console.log('players = ', players)
   return await fetch('/game', requestOptions)
 }
+
+export const getStartedGame = async (playerId) => {
+  const response = await fetch(`/my-started-game?playerId=${playerId}`)
+
+  if (response.status === 404) {
+    console.log('Not found started game!')
+    return null
+  }
+
+  const games = await response.json()
+  return games[0]
+}
