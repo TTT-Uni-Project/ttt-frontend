@@ -16,6 +16,10 @@ export const Home = () => {
 
   useEffect(() => {
     updateUserHeartbeat()
+    const heartbeatIntervalId = setInterval(updateUserHeartbeat, 15 * 100)
+    return () => {
+      clearInterval(heartbeatIntervalId)
+    }
   }, [])
 
   return (
