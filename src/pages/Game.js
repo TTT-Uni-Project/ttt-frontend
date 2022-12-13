@@ -6,11 +6,11 @@ import Info from '../components/Info'
 import { getLocalUser } from '../localStore'
 
 export const Game = () => {
-  const [board, setBoard] = useState([9,9,9,9,9,9,9,9,9])
+  const [board, setBoard] = useState([9, 9, 9, 9, 9, 9, 9, 9, 9])
   const [info, setInfo] = useState({ players: ['', ''], playerTurn: '' })
   const { gameId } = useParams()
 
-  const callback = useCallback(({ board, players, playerTurn, state, winner}) => {
+  const callback = useCallback(({ board, players, playerTurn, state, winner }) => {
     setBoard(board)
     setInfo({ players, playerTurn })
   }, [])
