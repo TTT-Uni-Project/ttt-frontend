@@ -64,3 +64,31 @@ h3 {
   display: flex;
   justify-content: center;
 }
+
+.finishedGame {
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding-right: 2rem;
+}
+
+.user h3 {
+  margin-right: 1rem;
+}
+
+.user button {
+  margin: 0 auto;
+}
