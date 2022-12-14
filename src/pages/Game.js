@@ -1,18 +1,25 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { joinRoom, offGameState, onGameState, playMove } from '../socketClient.js'
 import Board from '../components/Board'
 import Info from '../components/Info'
 import { getLocalUser } from '../localStore'
+import ReactConfetti from 'react-confetti'
 
 export const Game = () => {
   const [board, setBoard] = useState([9, 9, 9, 9, 9, 9, 9, 9, 9])
   const [info, setInfo] = useState({ players: ['', ''], playerTurn: '' })
+  const [winner, setWinner] = useState(null)
+  const [winnerName, setWinnerName] = useState('')
+  const [isFinished, setFinished] = useState(false)
   const { gameId } = useParams()
-
+  const navigate = useNavigate()
   const callback = useCallback(({ board, players, playerTurn, state, winner }) => {
     setBoard(board)
     setInfo({ players, playerTurn })
+    setFinished(state === "FINISHED")
+    setWinner(winner)
+    if (winner) setWinnerName(winner === players[0]?.id ? players[0]?.username : players[1]?.username)
   }, [])
 
   useEffect(() => {
@@ -25,6 +32,7 @@ export const Game = () => {
 
   return (
     <div className='App'>
+      {isFinished && winner != null && <ReactConfetti recycle={false} />} 
       <header>
         <div></div>
         <h1>Tic-Tac-Toe</h1>
